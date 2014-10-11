@@ -24,13 +24,21 @@ class BinaryTree(Node):
 
     def insert(self, root, data):
         if root is None:
-            root = Node(data)
-        else:
-            if(data <= root.data):
-               root.left = self.insert(root.left,data)
-            else:
-                root.right = self.insert(root.right,data)
+          root = Node(data)
+        elif(data <= root.data):
+          root.left = self.insert(root.left,data)
+        elif(data > root.data):
+          root.right = self.insert(root.right,data)
         return root
+          
+    def find(self, root, key):
+      if root is None or root.data is key:
+        return root
+      elif key < root.data:
+        return self.find(root.left, key)
+      else:
+        return self.find(root.right, key)
+
 
     '''
     In Order Traversal of the tree
@@ -94,7 +102,9 @@ class BinaryTree(Node):
 '''
 Generates a binary tree to play with
 '''
+
 bint = BinaryTree()
+
 root = bint.insert(None, 40)
 bint.insert(root,4)
 bint.insert(root,34)
@@ -102,6 +112,11 @@ bint.insert(root,45)
 bint.insert(root,14)
 bint.insert(root,55)
 bint.insert(root,48)
+
+bint.insert(root,13)
+bint.insert(root,15)
+bint.insert(root,49)
+bint.insert(root,47)
 
 print "\n\nPre Order Traversal:"
 bint.PreOrder(root)
@@ -112,3 +127,23 @@ bint.PostOrder(root)
 print "\n\nLevel Order Traversal:"
 bint.LevelOrder(root)
 
+bint = BinaryTree()
+
+root = bint.insert(None, 8)
+bint.insert(root, 3)
+bint.insert(root, 1)
+bint.insert(root, 6)
+bint.insert(root, 4)
+bint.insert(root, 7)
+bint.insert(root, 10)
+bint.insert(root, 14)
+bint.insert(root, 13)
+
+print "\n\nPre Order Traversal:"
+bint.PreOrder(root)
+print "\n\nIn Order Traversal:"
+bint.InOrder(root)
+print "\n\nPost Order Traversal:"
+bint.PostOrder(root)
+print "\n\nLevel Order Traversal:"
+bint.LevelOrder(root)
