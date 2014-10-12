@@ -31,13 +31,13 @@ class BinaryTree(Node):
           root.right = self.insert(root.right,data)
         return root
           
-    def find(self, root, key):
-      if root is None or root.data is key:
+    def find(self, root, data):
+      if root is None or root.data is data:
         return root
-      elif key < root.data:
-        return self.find(root.left, key)
+      elif data < root.data:
+        return self.find(root.left, data)
       else:
-        return self.find(root.right, key)
+        return self.find(root.right, data)
 
 
     '''
