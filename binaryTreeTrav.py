@@ -102,48 +102,37 @@ class BinaryTree(Node):
 '''
 Generates a binary tree to play with
 '''
+def genTree(tree):
+    if len(tree) is 0:
+        return
+    
+    bint = BinaryTree()
+    root = bint.insert(None, tree[0])
+    tree = tree[1:len(tree)-1]
+    for node in tree:
+        bint.insert(root,node)
+    return root, bint
 
-bint = BinaryTree()
+def printTraversals(bint, root):
 
-root = bint.insert(None, 40)
-bint.insert(root,4)
-bint.insert(root,34)
-bint.insert(root,45)
-bint.insert(root,14)
-bint.insert(root,55)
-bint.insert(root,48)
+    print "\n\nPre Order Traversal:"
+    bint.PreOrder(root)
+    print "\n\nIn Order Traversal:"
+    bint.InOrder(root)
+    print "\n\nPost Order Traversal:"
+    bint.PostOrder(root)
+    print "\n\nLevel Order Traversal:"
+    bint.LevelOrder(root)
 
-bint.insert(root,13)
-bint.insert(root,15)
-bint.insert(root,49)
-bint.insert(root,47)
+print "\n-------------------"
+tree1 = [ 4, 34, 45, 14, 55, 48, 13, 15, 49, 47 ] 
+print "\nInput #1:", tree1
+root, bint = genTree(tree1)
+printTraversals(bint, root)
+print "-------------------\n\n"
 
-print "\n\nPre Order Traversal:"
-bint.PreOrder(root)
-print "\n\nIn Order Traversal:"
-bint.InOrder(root)
-print "\n\nPost Order Traversal:"
-bint.PostOrder(root)
-print "\n\nLevel Order Traversal:"
-bint.LevelOrder(root)
-
-bint = BinaryTree()
-
-root = bint.insert(None, 8)
-bint.insert(root, 3)
-bint.insert(root, 1)
-bint.insert(root, 6)
-bint.insert(root, 4)
-bint.insert(root, 7)
-bint.insert(root, 10)
-bint.insert(root, 14)
-bint.insert(root, 13)
-
-print "\n\nPre Order Traversal:"
-bint.PreOrder(root)
-print "\n\nIn Order Traversal:"
-bint.InOrder(root)
-print "\n\nPost Order Traversal:"
-bint.PostOrder(root)
-print "\n\nLevel Order Traversal:"
-bint.LevelOrder(root)
+tree2 = [ 8, 3, 1, 6, 4, 7, 10, 14, 13 ]
+print "\nIntput #2", tree2
+root, bint = genTree(tree2)
+printTraversals(bint, root)
+print "-------------------\n"
